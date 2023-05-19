@@ -32,3 +32,6 @@ class Npc:
     def draw(self, surface):
         frame_surface = self.image.subsurface(self.frame_rect)
         surface.blit(frame_surface, (self.rect.x, self.rect.y))
+
+    def get_collision_rect(self):
+        return pygame.Rect(self.rect.x, self.rect.y, self.frame_rect.w, self.frame_rect.h)

@@ -1,5 +1,6 @@
 from hero import Hero
 from loot import Loot
+from npc import Npc
 from globals import Globals
 from typing import List
 
@@ -39,19 +40,22 @@ def check_collision(rect1, rect2):
 
 
 class Collision:
-    def __init__(self, g: Globals, hero: Hero, layers: List[Loot]):
+    def __init__(self, g: Globals, hero: Hero, collision_elements):
         self.g = g
         self.hero = hero
-        self.layers = layers
-    
+        self.collision_elements = collision_elements
+
     def update(self):
+        self.update_collision(self.collision_elements)
+
+    def update_collision(self, collision_elements):
         hero_rect = self.hero.get_collision_rect()
-        for layer in self.layers:
-            collide_rect = layer.get_collision_rect().colliderect(hero_rect)
+        for element in collision_elements:
+            collide_rect = element.get_collision_rect().colliderect(hero_rect)
             if collide_rect:
-                result = check_collision(hero_rect, layer.get_collision_rect())
+                result = check_collision(hero_rect, element.get_collision_rect())
                 if result == "bottom":
-                    layer.hero_at_bottom = True
+                    element.hero_at_bottom = True
                     self.g.set_hero_bottom()
                 elif result == "top":
                     self.g.set_hero_top()
@@ -63,5 +67,5 @@ class Collision:
                     self.g.set_hero_col_bool_false()
                 break
             else:
-                layer.hero_at_bottom = False
+                element.hero_at_bottom = False
                 self.g.set_hero_col_bool_false()

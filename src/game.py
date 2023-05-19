@@ -20,12 +20,11 @@ forest_ground = ZoneLayer(g, "../assets/map.png", 2048, 1792)
 forest_trees = ZoneLayer(g, "../assets/forest.png", 2048, 1792)
 chest_1 = Loot(g, "../assets/chestOpen.png", "../assets/chestClose.png", 500, 500, 16, 16)
 chest_2 = Loot(g, "../assets/chestOpen.png", "../assets/chestClose.png", 550, 550, 16, 16)
-# npc = Npc(globals, "assets/yeti.png",(600,600), 2, 5, 0, 0 )
 npc = Npc(g, "../assets/yeti.png", 600, 600, 2, 5, 0, 0, 160, 64)
 hero = Hero(g, "../assets/lockf.png", (WIDTH // 2, HEIGHT // 2), 4, 3, 0, 1)
 zone = Zone([forest_ground.update, chest_1.update, chest_2.update, npc.update, hero.update, forest_trees.update],
             [forest_ground.draw, chest_1.draw, chest_2.draw, npc.draw, hero.draw, forest_trees.draw],
-            Collision(g, hero, [chest_1, chest_2]),
+            Collision(g, hero, [chest_1, chest_2, npc]),
             2048, 1792)
 render_and_update = True
 
