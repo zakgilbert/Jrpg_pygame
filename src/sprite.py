@@ -1,11 +1,11 @@
 import pygame
-from pygame.locals import *
 from constants import *
 from globals import Globals
 from animator import Animator
 
+
 class Sprite:
-    def __init__(self,g: Globals, path, topleft, rows, cols, start_row, start_col):
+    def __init__(self, g: Globals, path, topleft, rows, cols, start_row, start_col):
         self.g = g
         self.image = pygame.image.load(path)
         self.rect = self.image.get_rect()
@@ -18,7 +18,7 @@ class Sprite:
                                       frame_h * start_row,
                                       frame_w, frame_h)
         self.animator = Animator(0.09)
-    
+
     def draw(self, surface):
         frame_surface = self.image.subsurface(self.frame_rect)
         surface.blit(frame_surface, self.rect.topleft)

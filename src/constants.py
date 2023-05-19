@@ -1,6 +1,4 @@
-import pygame
 from pygame.locals import *
-
 WIDTH = 800
 HEIGHT = 600
 DOWN = K_s

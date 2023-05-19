@@ -1,13 +1,14 @@
+import pygame
 from globals import Globals
 from constants import *
-from collidable_layer import Collidable_Layer
+from collidablelayer import CollidableLayer
 
 
 class Loot:
     def __init__(self, g: Globals, path_looted, path_loot, x, y, width, height):
-        self.looted_layer = Collidable_Layer(
+        self.looted_layer = CollidableLayer(
             g, path_looted, x, y, width, height)
-        self.loot_layer = Collidable_Layer(g, path_loot, x, y, width, height)
+        self.loot_layer = CollidableLayer(g, path_loot, x, y, width, height)
         self.looted = False
         self.hero_at_bottom = False
         self.g = g

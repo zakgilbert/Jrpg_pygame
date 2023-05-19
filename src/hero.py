@@ -1,9 +1,6 @@
 import pygame
-from pygame.locals import *
-from constants import *
 from globals import Globals
-from animator import *
-from movement import *
+from movement import up, down, left, right
 from sprite import Sprite
 
 

@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-from constants import *
+
 
 class Globals:
     def __init__(self):
@@ -13,7 +13,7 @@ class Globals:
         self.running = True
         self.clock = pygame.time.Clock()
         self.hero_col_bools = [False, False, False, False]
-    
+
     def selected(self):
         return self.keys[K_j]
 
@@ -28,7 +28,7 @@ class Globals:
 
     def get_hero_right(self):
         return self.hero_col_bools[3]
-    
+
     def set_hero_bottom(self):
         self.set_hero_col_bool(0)
 
@@ -40,7 +40,7 @@ class Globals:
 
     def set_hero_right(self):
         self.set_hero_col_bool(3)
-    
+
     def set_hero_col_bool_false(self):
         self.set_hero_col_bool(-1)
 
@@ -49,5 +49,4 @@ class Globals:
             if i == index:
                 self.hero_col_bools[i] = True
             else:
-                self.hero_col_bools[i] = False 
-
+                self.hero_col_bools[i] = False
